@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrustCircle — Find help through people you trust</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">◍</span>
+    <span class="brand-name">TrustCircle</span>
+  </div>
+  <div id="dbStatus" class="db-status">checking database…</div>
+</header>
+
+<main class="wrap">
+
+  <section class="intro">
+    <h1>Find help through people you actually trust.</h1>
+    <p class="lede">Every review site shows you strangers. TrustCircle shows you a path — who in your network vouches for a plumber, an electrician, a painter, and how many steps away they are.</p>
+  </section>
+
+  <section class="controls" aria-label="Search controls">
+    <div class="field">
+      <label for="personSelect">I am</label>
+      <select id="personSelect"></select>
+    </div>
+    <div class="field">
+      <label for="serviceSelect">Looking for</label>
+      <select id="serviceSelect">
+        <option value="">Any service</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="hopsRange">Reach <span id="hopsValue">3</span> hops out</label>
+      <input type="range" id="hopsRange" min="1" max="4" value="3">
+    </div>
+    <button id="searchBtn" class="btn-primary">Search my network</button>
+  </section>
+
+  <section class="results-section">
+    <div class="results-header">
+      <h2>Recommended for you</h2>
+      <p class="hint">Ranked by trust-weighted score — closer, stronger connections count more.</p>
+    </div>
+    <div id="results" class="results-grid" aria-live="polite">
+      <div class="empty-state">
+        <p>Pick who you are and what you need, then search.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="results-section">
+    <div class="results-header">
+      <h2>Hidden gems</h2>
+      <p class="hint">Highly rated by your extended network — nobody close to you has recommended them yet.</p>
+    </div>
+    <div id="gems" class="results-grid" aria-live="polite">
+      <div class="empty-state"><p>Search above to see hidden gems for your network.</p></div>
+    </div>
+  </section>
+
+  <section class="path-section">
+    <div class="results-header">
+      <h2>Trace a connection</h2>
+      <p class="hint">See exactly how two people in the network are linked, hop by hop.</p>
+    </div>
+    <div class="path-controls">
+      <select id="fromPerson"></select>
+      <span class="arrow">→</span>
+      <select id="toPerson"></select>
+      <button id="pathBtn" class="btn-secondary">Trace path</button>
+    </div>
+    <div id="pathResult" class="path-result" aria-live="polite"></div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>TrustCircle · a demo app backed by CognoDB (graph database) · built for the Wexa AI take-home assignment</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

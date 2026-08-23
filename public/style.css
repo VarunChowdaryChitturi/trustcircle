@@ -1,0 +1,189 @@
+/* TrustCircle — visual identity: a "trust ledger" register.
+   Deep ink-teal ground, brass accent for trust/score, a serif display
+   face for headings (registry / bulletin-board feel), plain sans for
+   body copy, and monospace for anything numeric — scores, hop counts,
+   distances — to make those read like measured data, not decoration. */
+
+:root {
+  --ink: #0F1B1E;
+  --surface: #16262A;
+  --surface-raised: #1D3236;
+  --line: #2C4448;
+  --brass: #C9A227;
+  --brass-soft: #8A7326;
+  --teal: #5FB3AC;
+  --text: #E8E4DA;
+  --text-muted: #93A8A5;
+  --radius: 10px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--text);
+  font-family: 'IBM Plex Sans', sans-serif;
+  line-height: 1.5;
+}
+
+h1, h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.mono, .score, .hops-badge, .db-status { font-family: 'IBM Plex Mono', monospace; }
+
+/* --- topbar --- */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 32px;
+  border-bottom: 1px solid var(--line);
+}
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand-mark { color: var(--brass); font-size: 22px; }
+.brand-name { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 600; }
+.db-status {
+  font-size: 12px;
+  color: var(--text-muted);
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+}
+.db-status.ok { color: var(--teal); border-color: var(--teal); }
+.db-status.error { color: #E08585; border-color: #6A3535; }
+
+/* --- layout --- */
+.wrap { max-width: 920px; margin: 0 auto; padding: 48px 24px 80px; }
+
+.intro { max-width: 640px; margin-bottom: 40px; }
+.intro h1 { font-size: 38px; line-height: 1.15; margin-bottom: 14px; }
+.lede { color: var(--text-muted); font-size: 16px; }
+
+/* --- controls --- */
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 16px;
+  align-items: end;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 48px;
+}
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+select, input[type=range] {
+  background: var(--ink);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 9px 10px;
+  font-size: 14px;
+  font-family: inherit;
+}
+input[type=range] { padding: 8px 0; accent-color: var(--brass); }
+
+.btn-primary, .btn-secondary {
+  border: none;
+  border-radius: 6px;
+  padding: 11px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+}
+.btn-primary { background: var(--brass); color: #1A1400; }
+.btn-primary:hover { background: #DDB531; }
+.btn-secondary { background: transparent; border: 1px solid var(--brass-soft); color: var(--brass); }
+.btn-secondary:hover { background: rgba(201,162,39,0.1); }
+
+/* --- results --- */
+.results-section { margin-bottom: 48px; }
+.results-header { margin-bottom: 16px; }
+.results-header h2 { font-size: 22px; margin-bottom: 4px; }
+.hint { color: var(--text-muted); font-size: 13px; margin: 0; }
+
+.results-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+.card-top { display: flex; justify-content: space-between; align-items: start; gap: 8px; margin-bottom: 8px; }
+.card h3 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px; margin: 0; }
+.score {
+  color: var(--brass);
+  font-size: 13px;
+  background: rgba(201,162,39,0.12);
+  border: 1px solid var(--brass-soft);
+  border-radius: 20px;
+  padding: 2px 9px;
+  white-space: nowrap;
+}
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.tag { font-size: 11px; color: var(--teal); border: 1px solid var(--line); border-radius: 4px; padding: 2px 7px; }
+.recommended-by { font-size: 12px; color: var(--text-muted); margin-top: 8px; }
+.recommended-by b { color: var(--text); font-weight: 500; }
+
+.empty-state, .loading-state, .error-state {
+  grid-column: 1 / -1;
+  padding: 32px;
+  text-align: center;
+  color: var(--text-muted);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  font-size: 14px;
+}
+.error-state { color: #E08585; border-color: #6A3535; }
+
+/* --- trust path tracer --- */
+.path-section {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.path-controls { display: flex; align-items: center; gap: 12px; margin: 16px 0; }
+.path-controls select { flex: 1; }
+.arrow { color: var(--text-muted); }
+.path-result { font-size: 14px; }
+.path-chain { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.path-node {
+  background: var(--surface-raised);
+  border: 1px solid var(--teal);
+  color: var(--text);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+.path-link { color: var(--teal); font-size: 12px; }
+.hops-badge {
+  display: inline-block;
+  color: var(--ink);
+  background: var(--teal);
+  border-radius: 4px;
+  padding: 1px 7px;
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+.footer {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 12px;
+  padding: 24px;
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 720px) {
+  .controls { grid-template-columns: 1fr; }
+  .intro h1 { font-size: 30px; }
+}

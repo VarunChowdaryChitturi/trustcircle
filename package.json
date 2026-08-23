@@ -1,0 +1,17 @@
+{
+  "name": "trustcircle",
+  "version": "1.0.0",
+  "description": "Find trustworthy local service providers through your social trust network — a CognoDB graph app.",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node seed/seed.js"
+  },
+  "dependencies": {
+    "neo4j-driver": "^5.24.0",
+    "express": "^4.19.2",
+    "dotenv": "^16.4.5",
+    "cors": "^2.8.5"
+  }
+}

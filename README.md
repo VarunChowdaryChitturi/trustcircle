@@ -1,6 +1,6 @@
 # TrustCircle
 
-**Live demo:** https://trustcircle.onrender.com
+**Live demo:** https://trustcircle-j50s.onrender.com
 
 Find trustworthy local service providers (plumbers, electricians, painters…) through your
 own social trust network, ranked by *who* recommends them and *how close* that person is to you —

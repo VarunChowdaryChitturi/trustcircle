@@ -1,5 +1,7 @@
 # TrustCircle
 
+**Live demo:** https://trustcircle.onrender.com
+
 Find trustworthy local service providers (plumbers, electricians, painters…) through your
 own social trust network, ranked by *who* recommends them and *how close* that person is to you —
 not by an anonymous star average.
@@ -156,5 +158,6 @@ Any free Node host works (Render, Railway, Fly.io). General shape:
 
 ## Screenshots
 
-*(Add screenshots here after running the app locally — the search results grid, the hidden
-gems section, and the trust-path tracer are the three worth capturing.)*
+![Search results](screenshots/results.png)
+![Hidden gems](screenshots/gems.png)
+![Trust path tracer](screenshots/path.png)
